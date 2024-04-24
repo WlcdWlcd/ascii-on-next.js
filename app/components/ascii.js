@@ -15,7 +15,10 @@ export default function Ascii (props){
 
     const element = (<div>
         <PropertiesForm handleAsciiChange={handleAsciiChange} />
-        <pre className="text-white bg-black mt-5" >{ascii}</pre>
+        <div className="text-center bg-black">
+            <pre className="text-white mt-5 overflow-y-hidden" >{ascii}</pre>
+        </div>
+        
 
 
 
