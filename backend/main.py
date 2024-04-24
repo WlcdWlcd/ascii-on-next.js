@@ -35,6 +35,8 @@ def root():
 
 class covertInData(BaseModel):
     base64_data:str
+    sliceSize:int
+    invert: bool
 
 class convertOutData(BaseModel):
     status:int
@@ -43,8 +45,7 @@ class convertOutData(BaseModel):
 @app.post('/convert')
 async def convert(data:covertInData):
 
-    ascii = await convertToAscii(data.base64_data)
-    print(ascii)
+    ascii = await convertToAscii(data.base64_data,slice_size = data.sliceSize,invert=data.invert)
     result = {
             'status':1,
             'ascii':ascii,

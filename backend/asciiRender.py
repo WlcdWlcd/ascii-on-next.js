@@ -15,6 +15,13 @@ class AsciiRender():
         self.coef = (len(self.keyboard)-1)/255
         
         
+    def setSlice(self,size):
+        self.slice=size
+
+    def setInvert(self,inverted):
+        if not inverted:
+            self.keyboard = self.keyboard[::-1]
+
 
     def chooseSymbol(self,scale):
         return self.keyboard[int(scale*self.coef)]
@@ -28,7 +35,7 @@ class AsciiRender():
     async def render(self):
         result = ''
         for row in range(0,self.width,self.slice):
-            for column in range(0,self.height,self.slice//2):
+            for column in range(0,self.height,int(self.slice/2.6)):
 
 
                 slice = self.img[row:row+self.slice, column:column+self.slice]
