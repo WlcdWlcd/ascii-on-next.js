@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
 
 from convertToAscii import convertToAscii
 
@@ -54,5 +55,6 @@ async def convert(data:covertInData):
 
     return result
 
-
+if __name__ == "__main__":
+  uvicorn.run("server.api:app", host="0.0.0.0", port=8000, reload=True)
 
